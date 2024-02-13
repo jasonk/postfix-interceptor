@@ -1,0 +1,17 @@
+#!/bin/bash
+# This script can run as an interceptor after the "mark-dev-mail"
+# script. It only processes messages that include the "X-Dev-Env: true"
+# header. It replaces the recipients list with only the email addresses
+# from the original recipients list that are also in our list of
+# developers.
+
+if [ -z "$DEVELOPERS_LIST" ]; then
+  DEVELOPERS_LIST="$HOME/developers.txt"
+fi
+
+# We don't do anything if the message is not marked as from a dev host
+if ! egrep -qw '^X-Dev-Env: true' headers.txt; then exit; fi
+
+# If it was from a dev host then we scrub the recipients list
+cp recipients.txt orig-recipients.txt
+grep -f "$DEVELOPERS_LIST" orig-recipients.txt > recipients.txt

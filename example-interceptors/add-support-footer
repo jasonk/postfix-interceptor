@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# This interceptor just appends a footer to every message that passes
+# through it. Note that it isn't very intelligent and won't do the
+# right thing for multipart-mime messages, but for most use-cases it's
+# fine.
+
+cat "$HOME/footer.txt" >> content.txt

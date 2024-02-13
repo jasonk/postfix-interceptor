@@ -1,0 +1,10 @@
+#!/bin/bash
+# This script can run as an interceptor after the "mark-dev-mail"
+# script. All it does is prefix "[DEV]" to the subject line of the 
+# message if it came from a dev host.
+
+# We don't do anything if the message is not marked as from a dev host
+if ! egrep -qw '^X-Dev-Env: true' headers.txt; then exit; fi
+
+SUBJ="$(head -1 subject.txt)"
+echo "[DEV] $SUBJ" > subject.txt

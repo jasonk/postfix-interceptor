@@ -1,0 +1,12 @@
+Received: from dev-app.mindwell.com (dev-app.mindwell.com [192.168.20.12])
+        by interceptor.mindwell.com (Postfix) with SMTP id 1234567890
+        for <jason@mindwell.com>; Wed, 13 May 1998 16:33:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+        by dev-app.mindwell.com (Postfix) with SMTP id 1234567890
+        for <jason@mindwell.com>; Wed, 13 May 1998 16:33:25 +0000 (UTC)
+Date: Wed, 13 May 1998 16:30:50 +0000
+From: "Test Server" <dev-test-thing@mindwell.com>
+To: jason@mindwell.com
+Subject: Some kind of test message
+
+This is a test message.  Please ignore it.

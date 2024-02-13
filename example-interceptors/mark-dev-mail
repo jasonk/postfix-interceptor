@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# This script can be run as an interceptor and will identify messages
+# that were sent by dev instances of a servcie and mark them with an
+# X-Dev-Env header, which can be used in recipients mail filters and
+# also in subsequent interceptor scripts.
+
+if [ -z "$DEV_HOSTS" ]; then
+  DEV_HOSTS="$HOME/dev-hosts.txt"
+fi
+
+# Extract the hostnames and IP addresses from the received headers
+# in the message and compare them to the list of dev hosts, if we
+# find a match mark the message as a dev message.
+for HOST in $(formail -fzcx received < headers.txt | awk '{print $2}'); do
+  if grep -qw "$HOST" "$DEV_HOSTS"; then
+    echo "X-Dev-Env: true" >> headers.txt
+    echo "X-Dev-Host: $HOST" >> headers.txt
+  fi
+done

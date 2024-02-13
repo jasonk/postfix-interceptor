@@ -1,0 +1,8 @@
+#!/bin/bash
+{
+  for ARG in "$@"; do
+    echo "$ARG"
+  done
+  echo '-----'
+  cat
+} > test-sendmail.txt

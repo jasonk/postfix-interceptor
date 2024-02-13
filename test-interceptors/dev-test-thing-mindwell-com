@@ -1,0 +1,6 @@
+#!/bin/sh
+
+../../example-interceptors/mark-dev-mail
+../../example-interceptors/prefix-dev-mail
+../../example-interceptors/dev-mail-only-to-developers
+../../example-interceptors/add-support-footer
